@@ -1,0 +1,20 @@
+{
+  "name": "kafka-nodejs-example-producer",
+  "version": "1.0.0",
+  "description": "A kafka producer that also acts as a web server.",
+  "author": "Anthony Hastings <ar.hastings@gmail.com> (https://antwan1986.github.io/)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node producer.js"
+  },
+  "dependencies": {
+    "avsc": "5.3.1",
+    "body-parser": "1.18.3",
+    "express": "4.16.3",
+    "express-promise-router": "3.0.2",
+    "kafka-node": "2.6.1",
+    "pg": "7.4.3",
+    "underscore": "1.9.1"
+  }
+}

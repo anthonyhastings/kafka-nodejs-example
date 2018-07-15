@@ -1,0 +1,9 @@
+# Ignore all files by default.
+*
+
+# White list only the required files and folders.
+!wait-for-it.sh
+!package.json
+!package-lock.json
+!src/producer.js
+!src/type.js

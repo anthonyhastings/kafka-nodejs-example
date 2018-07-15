@@ -1,0 +1,18 @@
+{
+  "name": "kafka-nodejs-example-consumer",
+  "version": "1.0.0",
+  "description": "A kafka consumer that inserts data into PostgreSQL.",
+  "author": "Anthony Hastings <ar.hastings@gmail.com> (https://antwan1986.github.io/)",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node consumer.js"
+  },
+  "dependencies": {
+    "avsc": "5.3.1",
+    "kafka-node": "2.6.1",
+    "moment": "2.22.2",
+    "pg": "7.4.3",
+    "uuid": "3.3.2"
+  }
+}
