@@ -1,15 +1,18 @@
-FROM node:8.11.3-alpine
+FROM node:10.9-alpine
 MAINTAINER Anthony Hastings <ar.hastings@gmail.com>
-
-# Installing bash.
-RUN apk add --no-cache bash bash-doc bash-completion
 
 # Create a directory (to house our source files) and navigate to it.
 WORKDIR /src
 
-# Copy over the bash script to test and wait on the availability of a TCP host and port.
-COPY ./wait-for-it.sh /src/
-RUN chmod +x /src/wait-for-it.sh
+# Installing dockerize which can test and wait on the availability of a TCP host and port.
+ENV DOCKERIZE_VERSION v0.6.1
+RUN apk add --no-cache openssl \
+    && wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
+    && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+
+# Installing bash.
+RUN apk add --no-cache bash bash-doc bash-completion
 
 # Copy over the package.json and lock file to the containers working directory.
 COPY ./package.json ./package-lock.json /src/

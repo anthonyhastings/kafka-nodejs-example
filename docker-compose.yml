@@ -32,7 +32,7 @@ services:
   producer:
     build: ./services/producer
     container_name: kafka-nodejs-example-producer
-    command: ./wait-for-it.sh zookeeper:2181 -- ./wait-for-it.sh kafka:9092 -- ./wait-for-it.sh database:5432 -- npm start
+    command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://database:5432 npm start"
     depends_on:
       - zookeeper
       - kafka
@@ -50,7 +50,7 @@ services:
   consumer:
     build: ./services/consumer
     container_name: kafka-nodejs-example-consumer
-    command: ./wait-for-it.sh zookeeper:2181 -- ./wait-for-it.sh kafka:9092 -- ./wait-for-it.sh database:5432 -- npm start
+    command: sh -c "dockerize -wait tcp://zookeeper:2181 -wait tcp://kafka:9092 -wait tcp://database:5432 npm start"
     depends_on:
       - zookeeper
       - kafka
