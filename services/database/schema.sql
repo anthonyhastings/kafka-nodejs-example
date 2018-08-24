@@ -1,7 +1,7 @@
 CREATE TABLE sales (
-  id          serial,
+  id          bigserial,
   uuid        uuid,
-  total       decimal(7, 2) DEFAULT 0.0,
+  total       numeric(7, 2) DEFAULT 0.0,
   sale_date   timestamp with time zone NOT NULL,
   created_at  timestamp with time zone NOT NULL DEFAULT NOW()
 );
